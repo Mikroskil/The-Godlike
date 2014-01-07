@@ -1,8 +1,26 @@
 <?php
 	include("session.php"); 
-	if(isset($_SESSION['userid'])) {
-	header('location:forum2.php'); }
+	if(!isset($_SESSION['userid'])) {
+	header('location:forum.php'); }
+	else { $usr = $_SESSION['userid']; }
 	require_once("connect.php");
+  
+	$query = mysql_query("SELECT * FROM member WHERE userid = '$usr'");
+	$hasil = mysql_fetch_array($query);
+	
+	if(isset($_POST['forum']))
+	{
+		$con = mysql_connect("localhost","root","");
+						
+		if(!$con)
+		{
+			die('Could not connect: ' . mysql_error());
+		}
+		
+		mysql_select_db("db", $con);
+		
+		mysql_query("insert into forum values('$usr','$_POST[textarea2]')");
+	}
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -32,7 +50,7 @@
       <tr align="center">
 	  	<td width="20%"><a class="button-2" href="index.php"><font size="+1" color="#000000"><b> Home </b></font></a></td>
         <td width="20%"><a class="button-2" href="menu.php"><font size="+1" color="#000000"><b> Menu </b></font></a></td>
-        <td width="20%"><a class="button-2" href="admin.php"><font size="+1" color="#000000"><b> Admin </b></font></a></td>
+        <td width="20%"><a class="button-2" href="#"><font size="+1" color="#000000"><b> Promotion And Discount </b></font></a></td>
         <td width="20%"><a class="button-2" href="billing.php"><font size="+1" color="#000000"><b> Billing </b></font></a></td>
         <td width="20%"><a class="button-3" href="forum.php"><font size="+1" color="#000000"><b> Forum </b></font></a></td>
       </tr>
@@ -43,9 +61,9 @@
   
   <tr bgcolor="#F3F2FF">
     <td>
-	  <form method="post" action="proseslogin.php">
-      	<label>
-      		<br />
+	  <form id="form1" name="form1" method="post" action="">
+      <label>
+	  <br />
       <table border="1" width="100%" cellpadding="0" cellspacing="0">
 	  		<?php
 				$con = mysql_connect("localhost","root","");
@@ -62,7 +80,7 @@
 				while($row = mysql_fetch_array($result))
 				{
 					echo "
-							<tr bgcolor='white'>
+							<tr>
 								<td width='15%'>" . $row['userid'] . "</td>
 								<td width='5%' align='center'>  :  </td>
 								<td width='80%'> " . $row['mes'] . "</td>
@@ -71,34 +89,19 @@
 				}
 			?>
 	  </table>
-      	</label>
-	    
-		<br /><br />
-		
-		<table>
-			<tr>
-				<td> ID </td>
-				<td> : </td>
-				<td> <input type="text" name="userid" /> </td>
-			</tr>
-			<tr>
-				<td> Password </td>
-				<td> : </td>
-				<td> <input type="password" name="password" /> </td>
-			</tr>
-			<tr>
-				<td>&nbsp;  </td>
-				<td>&nbsp;  </td>
-				<td> <input type="submit" name="submit" value="Login"/> </td>
-			</tr>
-			<tr>
-				<td>&nbsp;  </td>
-				<td>&nbsp;  </td>
-				<td> <a href="register.php"> Register ?? click here </a> </td>
-			</tr>
-		</table>
-	  </form>    
-	</td>
+      </label> <br /><br /><br /><br /><br />
+	    <label>
+	    <textarea id="txt2" name="textarea2" cols="70" rows="4">
+		</textarea>
+	    </label>
+		<br />
+		<label>
+		<input type="submit" value="Post" name="forum"/> 
+		</label>
+		<label>
+			<a href="logout.php"><b>Logout</b></a>
+		</label>
+	  </form>    </td>
   </tr>
 </table>
 </body>
