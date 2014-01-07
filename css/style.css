@@ -1,0 +1,139 @@
+/*header*/
+.button-2 {
+	display:inherit; 
+	padding:10px 40px;
+	font-size:13px;
+	line-height:1.23em;
+	color:#FFF; 
+	background:#FFCCFF;
+	cursor:pointer;
+	text-decoration:none;
+	height:30px;
+	width:50px;
+}
+.button-2:hover {background:#FF33CC;}
+
+.button-3 {
+	display:inherit; 
+	padding:10px 40px;
+	font-size:13px;
+	line-height:1.23em;
+	color:#FFF; 
+	background:#FF33CC;
+	cursor:pointer;
+	text-decoration:none;
+	height:30px;
+	width:50px;
+}
+.button-2:hover {background:#FF33CC;}
+
+/*index slider*/
+.slider-wrapper {
+	width:600px;
+	height:466px;
+	padding:10px;
+	overflow:hidden;
+}
+.slider {
+	width:600px;
+	height:466px;
+}
+
+.pagination {
+	position:absolute;
+	left:227px;
+	bottom:19px;
+	z-index:99;
+}
+	.pagination li {
+		float:left;
+		padding-right:4px;
+	}
+	.pagination a {
+		display:block;
+		width:26px;
+		height:26px;
+		background:url(../images/slider-pagination.png) right top no-repeat;
+		cursor:pointer;
+	}
+	.pagination li.current a {cursor:default;}
+	.pagination li.current a,
+	.pagination a:hover {background-position:left top;}
+
+/*menu*/
+.container {
+	width:940px; 	
+	padding:0;
+	margin:0 auto;
+}
+
+.link,
+.button-1{text-decoration:none;}		
+
+#content {
+	width:100%; 
+	padding:15px 0 50px;
+	background:#f2f2f2;
+	position:relative;
+	z-index:1;
+}
+
+.button-1 {
+	display:inline-block; 
+	padding:12px 19px;
+	font-size:13px;
+	line-height:1.23em;
+	color:#fff; 
+	background:url(../images/button1-tail.gif) 0 0 repeat-x #c42e02;
+	cursor:pointer;
+}
+.button-1:hover {background:#c42e02;}
+
+#slider-2 div {
+	overflow:hidden;
+	width:240px;
+	height:380px;
+}
+#slider-2 figure {margin-bottom:15px;}
+
+.bx-pager {padding:10px 0 0 0; text-align:center;}
+	
+.pager-link {
+	display:inline-block;
+	color:#c42e02;
+	margin-right:15px;
+	cursor:pointer;
+	text-decoration:none;
+}
+.pager-link:hover, 
+.pager-active{color:#7f7f7f;}
+.pager-active {cursor:default;}
+
+.lightbox-image {
+	position:relative;
+	z-index:1;
+	overflow:hidden;
+	display:inline-block;
+	cursor:pointer;
+	}
+	
+	.lightbox-image span {
+		display:inline-block;
+		position:absolute;
+		left:0px;
+		top:-100%;
+		width:100%;
+		height:100%;
+		background:url(../images/magnify.png) no-repeat 50% 50%;
+		z-index:2;
+		padding:0;
+	}
+
+/* forum */
+#txt1{
+	resize:none;
+}
+
+#txt2{
+	resize:none;
+}
